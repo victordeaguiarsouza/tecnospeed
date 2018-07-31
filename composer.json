@@ -1,0 +1,25 @@
+{
+    "name"          : "victordeaguiarsouza/tecnospeed",
+    "description"   : "Wrapper php para comunicação com a api tecnospeed",
+    "type"          : "library",
+    "license"       : "Apache",
+    "authors": [{
+        "name"  : "Victor de Aguiar Souza",
+        "email" : "victordeaguiarsouza@gmail.com"
+    }],
+    
+    "require": {
+        "php-curl-class/php-curl-class" : "^7.1"
+    },
+    
+    "autoload": {
+        
+        "psr-4": {
+            "Tecnospeed\\": "src/Tecnospeed"
+        },
+
+        "classmap" : [
+            "src/Tecnospeed"
+        ]
+    }
+}
