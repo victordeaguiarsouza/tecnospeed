@@ -12,25 +12,40 @@ class Api {
     
     private $curl;
     private $url;
-    private $appToken;
-    private $accessToken;
+    private $token;
     private $timeout;
+    private $headers = array();
+
 
     /**
      * Construtor
      * 
      * @param string $url
-     * @param string $appToken
-     * @param string $accessToken
+     * @param string $token
      * @param int $timeout
      */
-    public function __construct($url, $appToken, $accessToken, $timeout){
+    public function __construct($url, $token, $timeout){
 
-        $this->curl        = new \Curl\Curl();
-        $this->url         = $url;
-        $this->appToken    = $appToken;
-        $this->accessToken = $accessToken;
-        $this->timeout     = $timeout;
+        $this->curl     = new \Curl\Curl();
+        $this->url      = $url;
+        $this->token    = $token;
+        $this->timeout  = $timeout;
+
+        $this->addHeader('Content-Type'  , 'application/x-www-form-urlencoded');
+        $this->addHeader('Authorization' , $token);
+    }
+
+    /**
+     * Adiciona um item no Header
+     * 
+     * @param string $key
+     * @param string $value
+    */
+    public function addHeader($key, $value){
+        
+        if(!empty($key) && !empty($value)){
+            $this->headers[$key] = $value;
+        }
     }
 
     /**
@@ -51,9 +66,10 @@ class Api {
             $this->curl->setOpt(CURLOPT_SSL_VERIFYPEER , false);
             $this->curl->setOpt(CURLOPT_SSL_VERIFYHOST , false);
             
-            $this->curl->setHeader('Content-Type' , 'application/x-www-form-urlencoded');
-            $this->curl->setHeader('app_token'    , $this->appToken);
-            $this->curl->setHeader('access_token' , $this->accessToken);
+            foreach($this->headers as $key => $value){
+                
+                $this->curl->setHeader($key, $value);
+            }
 
             $this->curl->setConnectTimeout($this->timeout);
 

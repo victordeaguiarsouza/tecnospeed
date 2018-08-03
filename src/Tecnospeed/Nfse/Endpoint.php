@@ -46,24 +46,6 @@ abstract class Endpoint {
     }
 
     /**
-     * Edita um dado no endpoint
-     * 
-     * @param array $data = null Parâmetros da requisição
-     * @return object Resposta do serviço
-    */
-    public function put($data = null){
-        
-        try{
-            
-            return $this->api->execute('put', $this->getEndpoint(), $data);
-        }
-        catch(\Exception $e){
-            
-            throw $e;
-        }        
-    }
-
-    /**
      * Consulta por registros no endpoint
      * 
      * @param array $data = null Parâmetros da requisição
@@ -81,39 +63,4 @@ abstract class Endpoint {
         }        
     }
 
-    /**
-     * Apaga um registro no endpoint
-     * 
-     * @param array $data = null Parâmetros da requisição
-     * @return object Resposta do serviço
-    */
-    public function delete($data = null){
-        
-        try{
-            
-            return $this->api->execute('delete', $this->getEndpoint(), $data);
-        }
-        catch(\Exception $e){
-            
-            throw $e;
-        }        
-    }
-
-    /**
-     * Apaga um registro no endpoint
-     * 
-     * @param array $data = null Parâmetros da requisição
-     * @return object Resposta do serviço
-    */
-    public function patch($data = null){
-        
-        try{
-            
-            return $this->api->execute('patch', $this->getEndpoint(), $data);
-        }
-        catch(\Exception $e){
-            
-            throw $e;
-        }        
-    }
 }
