@@ -14,7 +14,7 @@ autorizada, rejeitada ou ainda se está em processamento por parte da prefeitura
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class Enviar extends Endpoint{
+class Enviar extends \Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 

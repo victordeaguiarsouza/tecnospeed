@@ -1,13 +1,13 @@
 <?php
 
-namespace Tecnospeed\Nfse;
+namespace Tecnospeed\Commons;
 
 /**
- * Responsável pela comunicação com a api tecnospeed
+ * Responsável pela comunicação com a api da tecnospeed
  * 
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
- */
+*/
 class Api {
     
     private $curl;
@@ -16,23 +16,19 @@ class Api {
     private $timeout;
     private $headers = array();
 
-
     /**
      * Construtor
      * 
      * @param string $url
      * @param string $token
-     * @param int $timeout
-     */
+     * @param int    $timeout
+    */
     public function __construct($url, $token, $timeout){
 
         $this->curl     = new \Curl\Curl();
         $this->url      = $url;
         $this->token    = $token;
         $this->timeout  = $timeout;
-
-        $this->addHeader('Content-Type'  , 'application/x-www-form-urlencoded');
-        $this->addHeader('Authorization' , $token);
     }
 
     /**
@@ -77,7 +73,7 @@ class Api {
 
             if($this->curl->error) {
 
-                throw new \Tecnospeed\Nfse\Exception($this->curl);
+                throw new \Tecnospeed\Commons\Exception($this->curl);
             }
 
             return $this->curl->response;
@@ -86,5 +82,15 @@ class Api {
             
             throw $e;
         }        
+    }
+
+    /**
+     * Retorna o token
+     * 
+     * @return $token
+    */
+    public function getToken(){
+        
+        return $this->token;
     }
 }

@@ -15,7 +15,7 @@ serem descartadas. */
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class Descartar extends Endpoint{
+class Descartar extends \Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 

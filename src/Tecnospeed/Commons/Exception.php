@@ -1,6 +1,6 @@
 <?php
 
-namespace Tecnospeed\Nfse;
+namespace Tecnospeed\Commons;
 
 class Exception extends \Exception {
     
@@ -9,8 +9,7 @@ class Exception extends \Exception {
     /**
      * Construtor
      * 
-     * @param string $appToken
-     * @param string $accessToken
+     * @param \Curl\Curl $request
      */
     public function __construct(\Curl\Curl $request){
 

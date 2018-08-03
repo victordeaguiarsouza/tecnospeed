@@ -13,7 +13,7 @@ fizermos, será a resposta do SaaS dizendo se a nota foi cancelada ou se não fo
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class Cancelar extends Endpoint{
+class Cancelar extends \Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tecnospeed\Nfse;
+namespace Tecnospeed\Commons;
 
 /**
  * Define os comportamentos básicos de um endpoint na api
@@ -11,6 +11,7 @@ namespace Tecnospeed\Nfse;
 abstract class Endpoint {
     
     protected $api;
+    protected $queryString;
 
     /**
      * @return string o nome do endpoint da model 
@@ -20,9 +21,9 @@ abstract class Endpoint {
     /**
      * Construtor.
      * 
-     * @param \Tecnospeed\Api $api
+     * @param \Tecnospeed\Commons\Api $api
     */
-    public function __construct(\Tecnospeed\Nfse\Api $api){
+    public function __construct(\Tecnospeed\Commons\Api $api){
 
         $this->api = $api;
     }

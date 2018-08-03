@@ -12,7 +12,7 @@ enviadas para o SaaS de acordo com um filtro especifico. */
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class Exportar extends Endpoint{
+class Exportar extends \Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 
