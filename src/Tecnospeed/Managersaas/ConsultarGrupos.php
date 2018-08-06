@@ -16,6 +16,6 @@ class CadastrarEmpresa extends \Commons\Endpoint {
     */
     public function getEndpoint(){
         
-        return "";
+        return "grupo";
     }    
 }

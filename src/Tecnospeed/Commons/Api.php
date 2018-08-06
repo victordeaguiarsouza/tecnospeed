@@ -12,7 +12,6 @@ class Api {
     
     private $curl;
     private $url;
-    private $token;
     private $timeout;
     private $headers = array();
 
@@ -20,14 +19,12 @@ class Api {
      * Construtor
      * 
      * @param string $url
-     * @param string $token
      * @param int    $timeout
     */
-    public function __construct($url, $token, $timeout){
+    public function __construct($url, $timeout){
 
         $this->curl     = new \Curl\Curl();
         $this->url      = $url;
-        $this->token    = $token;
         $this->timeout  = $timeout;
     }
 
@@ -82,15 +79,5 @@ class Api {
             
             throw $e;
         }        
-    }
-
-    /**
-     * Retorna o token
-     * 
-     * @return $token
-    */
-    public function getToken(){
-        
-        return $this->token;
     }
 }

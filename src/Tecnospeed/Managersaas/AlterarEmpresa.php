@@ -3,13 +3,13 @@
 namespace Tecnospeed\Managersaas;
 
 /**
- * Endpoint de descartar
+ * Endpoint para alterar cadastro de empresa
  * 
- * @link https://managersaas.tecnospeed.com.br:1337/api/v1/empresa?token=545m0cetr2r0tjll3di1533572601234
+ * @link https://managersaas.tecnospeed.com.br:1337/api/v1/empresa/{{idEmpresa}}
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class CadastrarEmpresa extends \Commons\Endpoint {
+class AlterarEmpresa extends \Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 

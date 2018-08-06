@@ -5,7 +5,7 @@ namespace Tecnospeed\Managersaas;
 /**
  * Endpoint de descartar
  * 
- * @link https://managersaas.tecnospeed.com.br:1337/api/v1/empresa?token=545m0cetr2r0tjll3di1533572601234
+ * @link https://managersaas.tecnospeed.com.br:1337/api/v1/empresa?token=545m0cetr2r0tjll3di1533572601234&idgrupo=922&skip=0&limit=10&sort=identificacao
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */

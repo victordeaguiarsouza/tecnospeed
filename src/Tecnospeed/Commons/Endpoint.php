@@ -64,4 +64,23 @@ abstract class Endpoint {
         }        
     }
 
+    /**
+     * Edita um dado no endpoint
+     * 
+     * @param array $id = identificador do registro
+     * @param array $data = null Parâmetros da requisição
+     * @return object Resposta do serviço
+    */
+    public function put($id, $data = null){
+        
+        try{
+            
+            return $this->api->execute('put', $this->getEndpoint() . "/$id", $data);
+        }
+        catch(\Exception $e){
+            
+            throw $e;
+        }        
+    }
+
 }
