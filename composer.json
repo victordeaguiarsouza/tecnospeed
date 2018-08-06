@@ -2,7 +2,7 @@
     "name"          : "victordeaguiarsouza/tecnospeed",
     "description"   : "Wrapper php para comunicação com a api tecnospeed",
     "type"          : "library",
-    "license"       : "Apache",
+    "license"       : "MIT",
     "authors": [{
         "name"  : "Victor de Aguiar Souza",
         "email" : "victordeaguiarsouza@gmail.com"
