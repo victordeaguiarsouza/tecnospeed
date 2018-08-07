@@ -11,7 +11,7 @@ namespace Tecnospeed\Nfse;
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class Imprimir extends \Commons\Endpoint {
+class Imprimir extends \Tecnospeed\Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 
