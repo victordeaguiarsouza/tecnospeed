@@ -2,7 +2,7 @@
 
 namespace Tecnospeed\Commons;
 
-class Exception extends \Exception {
+class TecnospeedException extends \Exception {
     
     public $request;
 

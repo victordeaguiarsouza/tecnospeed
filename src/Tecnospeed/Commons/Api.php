@@ -21,11 +21,15 @@ class Api {
      * @param string $url
      * @param int    $timeout
     */
-    public function __construct($url, $timeout){
+    public function __construct($url, $username, $password, $timeout){
 
         $this->curl     = new \Curl\Curl();
         $this->url      = $url;
         $this->timeout  = $timeout;
+
+        if(isset($username) && isset($password)){
+            $this->curl->setOpt(CURLOPT_USERPWD, "$username:$password");
+        }
     }
 
     /**
@@ -38,6 +42,19 @@ class Api {
         
         if(!empty($key) && !empty($value)){
             $this->headers[$key] = $value;
+        }
+    }
+
+    /**
+     * Remove um item no Header
+     * 
+     * @param string $key
+     * @param string $value
+    */
+    public function removeHeader($key){
+        
+        if(!empty($key)){
+            unset($this->headers[$key]);
         }
     }
 
@@ -70,14 +87,18 @@ class Api {
 
             if($this->curl->error) {
 
-                throw new \Tecnospeed\Commons\Exception($this->curl);
+                throw new \Tecnospeed\Commons\TecnospeedException($this->curl);
             }
 
             return $this->curl->response;
         }
+        catch(\Tecnospeed\Commons\TecnospeedException $e){
+            
+            throw $e;
+        }
         catch(\Exception $e){
             
             throw $e;
-        }        
+        }
     }
 }
