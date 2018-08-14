@@ -9,7 +9,7 @@ namespace Tecnospeed\Managersaas;
  * @author Victor Aguiar <victordeaguiarsouza@gmail.com>
  * @copyright (c) 2018
  */
-class CadastrarEmpresa extends \Tecnospeed\Commons\Endpoint {
+class ConsultarGrupos extends \Tecnospeed\Commons\Endpoint {
     
     /**
      * @return string o nome do endpoint da model 
