@@ -19,6 +19,11 @@ abstract class Endpoint {
     abstract public function getEndpoint();
 
     /**
+     * @return string o response da tecnospeed formatado 
+     */
+    abstract protected function responseHandler($response, $data);
+
+    /**
      * Construtor.
      * 
      * @param \Tecnospeed\Commons\Api $api
@@ -35,13 +40,15 @@ abstract class Endpoint {
      * @return object Resposta do serviço
     */
     public function post($data = null){
-        
+
         try{
-            
-            return $this->api->execute('post', $this->getEndpoint(), $data);
+
+            $response = $this->api->execute('post', $this->getEndpoint(), $data);
+
+            return $this->responseHandler($response, $data);
         }
         catch(\Exception $e){
-            
+
             throw $e;
         }        
     }
@@ -53,13 +60,15 @@ abstract class Endpoint {
      * @return object Resposta do serviço
     */
     public function get($data = null){
-        
+
         try{
-            
-            return $this->api->execute('get', $this->getEndpoint(), $data);
+
+            $response = $this->api->execute('get', $this->getEndpoint(), $data);
+
+            return $this->responseHandler($response, $data);
         }
         catch(\Exception $e){
-            
+
             throw $e;
         }        
     }
@@ -72,13 +81,13 @@ abstract class Endpoint {
      * @return object Resposta do serviço
     */
     public function put($id, $data = null){
-        
+
         try{
-            
+
             return $this->api->execute('put', $this->getEndpoint() . "/$id", $data);
         }
         catch(\Exception $e){
-            
+
             throw $e;
         }        
     }

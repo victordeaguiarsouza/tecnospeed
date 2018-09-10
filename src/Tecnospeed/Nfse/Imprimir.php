@@ -19,5 +19,44 @@ class Imprimir extends \Tecnospeed\Commons\Endpoint {
     public function getEndpoint(){
         
         return 'imprime';
-    }    
+    }
+
+    /**
+     * @return string o nome do endpoint da model 
+     */
+    protected function responseHandler($response, $data){
+
+        try{
+
+            $imprime        = new \Tecnospeed\Nfse\Responses\ImprimeResponse;
+            $httpStatusCode = $this->api->getCurl()->httpStatusCode;
+
+            $retorno = explode($this->api->delimiter, $response);
+            
+            if($retorno[0] == 'EXCEPTION'){
+
+                switch($retorno[1]){
+                    case 'EspdAPIWebServerErrorException': throw new \Tecnospeed\Exceptions\EspdAPIWebServerErrorException($this->api->getCurl());
+                    default: throw new \Tecnospeed\Exceptions\TecnospeedException($this->api->getCurl());
+                }
+
+            }elseif($httpStatusCode == 200 && strpos($retorno[0],'http:') !== false) {
+
+                $imprime->pdfUrl = $retorno[0];
+            }else{
+            
+                $imprime->pdfBinario = $retorno[0];
+            }
+
+            $imprime->status   = $httpStatusCode;
+            $imprime->response = $response;
+
+            return $imprime;
+        }
+        catch(\Exception $e){
+
+            throw $e;
+        }        
+    }
+
 }

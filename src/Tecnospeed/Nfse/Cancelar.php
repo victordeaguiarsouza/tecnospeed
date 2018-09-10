@@ -21,5 +21,45 @@ class Cancelar extends \Tecnospeed\Commons\Endpoint {
     public function getEndpoint(){
         
         return 'cancela';
-    }    
+    }
+
+
+    protected function responseHandler($response, $data){
+
+        try{
+
+            $retorno = explode($this->api->delimiter, $response);
+            
+            if($retorno[0] == 'EXCEPTION'){
+
+                switch($retorno[1]){
+                    case 'EspdManNFSeConfigException': throw new \Tecnospeed\Exceptions\EspdManNFSeConfigException($this->api->getCurl());
+                    default: throw new \Tecnospeed\Exceptions\TecnospeedException($this->api->getCurl());
+                }
+
+            }else{
+
+                if(strpos($retorno[3], 'Rejeitada') !== false){
+                    
+                    throw new \Tecnospeed\Exceptions\RejeicaoException($this->api->getCurl());
+                }
+
+            }
+
+            $cancela = new \Tecnospeed\Nfse\Responses\CancelaResponse;
+    
+            $cancela->status     = $this->api->getCurl()->httpStatusCode;
+            $cancela->handle     = $retorno[0];
+            $cancela->numeroNFSe = $retorno[1];
+            $cancela->protocolo  = $retorno[2];
+            $cancela->mensagem   = $retorno[3];
+            $cancela->response   = $response;
+
+            return $cancela;
+        }
+        catch(\Exception $e){
+            
+            throw $e;
+        }        
+    }
 }
