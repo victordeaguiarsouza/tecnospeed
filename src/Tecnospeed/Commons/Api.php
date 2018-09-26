@@ -97,7 +97,9 @@ class Api {
 
             if($this->curl->error) {
 
-                throw new \Tecnospeed\Exceptions\TecnospeedException($this->curl);
+                throw new \Exception($this->curl->error);
+                
+                //throw new \Tecnospeed\Exceptions\TecnospeedException($this->curl);
             }
 
             $this->curl->response    = str_replace('\delimiter', '', utf8_encode($this->curl->response));

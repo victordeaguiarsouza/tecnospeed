@@ -55,8 +55,8 @@ class Enviar extends \Tecnospeed\Commons\Endpoint {
     
             $envio->status     = $this->api->getCurl()->httpStatusCode;
             $envio->handle     = $retorno[0];
-            $envio->numeroLote = $retorno[1];
-            $envio->numeroNFSe = $retorno[2];
+            $envio->nlote      = $retorno[1];
+            $envio->nnfse      = $retorno[2];
             $envio->mensagem   = $retorno[3];
             $envio->response   = $response;
 

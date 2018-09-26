@@ -50,7 +50,7 @@ class Cancelar extends \Tecnospeed\Commons\Endpoint {
     
             $cancela->status     = $this->api->getCurl()->httpStatusCode;
             $cancela->handle     = $retorno[0];
-            $cancela->numeroNFSe = $retorno[1];
+            $cancela->nnfse      = $retorno[1];
             $cancela->protocolo  = $retorno[2];
             $cancela->mensagem   = $retorno[3];
             $cancela->response   = $response;
